@@ -1,0 +1,314 @@
+ 
+ 
+Morgan M. Hardjadinata
+ 
+(425) 766
+-
+7568 | mhardjadinat@wisc.edu | linkedin.com/in/morganhard | github.com/morganhard | Madison, WI
+ 
+ 
+PROFESSIONAL SUMMARY
+ 
+Data Science and AI Engineering student at UW
+-
+Madison with hands
+-
+on internship experience at one of the largest automotive 
+semiconductor 
+manufacturers
+. Specialized in developing and deploying multimodal, agentic AI systems using LLMs, RAG, and 
+DevOps principles. Proven ability to deliver production
+-
+level AI solutions that automate complex diagnostics and optimize supply 
+chain analytics, seeking a challe
+nging full
+-
+time AI/ML Engineer role.
+ 
+ 
+EDUCATION
+ 
+University of Wisconsin
+-
+Madison
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+     
+Madison, WI
+ 
+Bachelor of Science, Computer and Data Science
+ 
+| 
+Dec
+ 
+202
+5
+ 
+ 
+ 
+ 
+ 
+                   
+GPA: 3.
+64
+/4.0
+ 
+Relevant Coursework
+: 
+Artificial Intelligence, Big Data Systems, Database Management, Operating Systems, Algorithms & Data 
+Structures, Linear Algebra, Data Science Modeling.
+ 
+ 
+TECHNICAL SKILLS
+ 
+●
+ 
+Languages:
+ 
+Java, Python, C++, R, HTML, CSS, JavaScript.
+ 
+●
+ 
+AI/ML Frameworks: 
+PyTorch, LangChain, LangGraph, Autogen, Hugging Face, LlamaIndex
+ 
+●
+ 
+Cloud/DevOps: 
+AWS, GCP (Vertex AI), Kubernetes, Docker, Spark, Hadoop
+ 
+●
+ 
+Databases
+: 
+ChromaDB, SQL, Silicon.da
+ 
+ 
+EXPERIENCE
+ 
+Infineon Technologies
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+      
+Tokyo, Japan & San Jose, CA
+ 
+AI & Embedded Software Engineer
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+       
+June 2025 
+–
+ 
+Sep 2025
+ 
+•
+ 
+Led the implementation of a 
+Multimodal AI
+ 
+agent automating SRAM/SCAN diagnostics for 
+10+
+ 
+Traveo & PSoC 
+microcontrollers, achieving an estimated 
+40% reduction
+ 
+in manual analysis time.
+ 
+•
+ 
+Engineered a critical 
+data migration pipeline
+ 
+for the supply chain department, transitioning 
+over 5 TB
+ 
+of legacy data to the 
+AI
+-
+ready Silicon.da cloud platform to enable new Gen AI analytics.
+ 
+•
+ 
+Developed and deployed LLM agentic frameworks (
+LangChain, CrewAI
+) to process and analyze mass production data, 
+identifying key manufacturing trends to support a 
+5% optimization
+ 
+in supply chain efficiency.
+ 
+ 
+Infineon Technologies
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+           
+Singapore
+ 
+Software 
+Engineer
+ 
+ 
+                        
+ 
+ 
+ 
+ 
+                                    
+ 
+       
+May 2024 
+–
+ 
+Sep 2024
+ 
+●
+ 
+Developed and deployed an AI
+-
+powered automation solution for the Electrical Failure Analysis (EFA) lab, increasing overall 
+lab productivity by 
+30%
+ 
+for the Tricore product line.
+ 
+●
+ 
+Engineered a 
+Hybrid Search Retrieval
+-
+Augmented Generation (RAG)
+ 
+system on Google's Vertex AI to process over 
+500 
+GB
+ 
+of unstructured technical documents, improving the accuracy of AI
+-
+generated diagnostic reports by 
+50%.
+ 
+●
+ 
+Built a unified AI interface that automated the concurrent control of 
+six
+ 
+distinct electrical test systems, reducing manual 
+operator intervention by 
+40%
+ 
+and minimizing human error.
+ 
+PROJECT
+ 
+EXPERIENCE
+ 
+Bellevue College Programming Club
+, Bellevue, WA
+ 
+                                                                      
+ 
+        
+Jun 2023 
+–
+ 
+Dec 2023
+ 
+Developed a full
+-
+stack web application using Python (Flask) and JavaScript (React) to help 
+200+
+ 
+students plan their course schedules, 
+pulling real
+-
+time data from the college's public API.
+ 
+ 
+EXTRACURRICULAR
+ 
+Badger Solar Racing 
+–
+ 
+Firmware CAR 2 and Website Operator
+ 
+ 
+ 
+ 
+ 
+           
+May
+ 
+202
+5
+ 
+–
+ 
+Present
+ 
+Designed and engineered an interactive steering wheel dashboard UI to provide real
+-
+time data visualization (e.g., speedometer, system 
+diagnostics) and control over the vehicle's hydraulics, directly contributing to the optimization of in
+-
+race power consump
+tion.
+ 
+ 
+Badger Drone Club 
+–
+ 
+Computer Vision
+ 
+                          
+ 
+ 
+ 
+ 
+ 
+                      
+July
+ 
+202
+4
+ 
+–
+ 
+Sep 2025
+ 
+Developing computer vision systems with OpenCV and Python to implement autonomous object tracking and a hand gesture 
+recognition module for intuitive, real
+-
+time drone command and control of DJI Tello Drones
+.
+ 

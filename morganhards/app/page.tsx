@@ -1,128 +1,113 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { ActiveTerminal } from "@/components/landing/active-terminal";
+import { TechMatrix } from "@/components/landing/tech-matrix";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import { Terminal, Video, Workflow, Cpu, Database, Network } from "lucide-react";
+import { Download, Mail, ChevronDown } from "lucide-react";
+import ContactPage from "@/app/contact/page";
+import { AboutMe } from "@/components/landing/about-me";
+import { ExperienceTimeline } from "@/components/landing/experience-timeline";
+import { TestimonialsCarousel } from "@/components/landing/testimonials-carousel";
+import { FeaturedProjects } from "@/components/landing/featured-projects";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen bg-neutral-950 text-neutral-50 font-sans">
+    <div className="flex flex-col items-center justify-center min-h-screen px-6 md:px-12 lg:px-20 max-w-screen-2xl mx-auto space-y-12">
 
-      {/* Sidebar Navigation */}
-      <aside className="w-64 border-r border-neutral-800 bg-neutral-900/20 p-6 hidden md:flex md:flex-col">
-        <div className="mb-8">
-          <h2 className="text-xl font-bold tracking-tight">Platform OS</h2>
-          <p className="text-xs text-neutral-500">v1.0.0-beta</p>
+      {/* Hero Section */}
+      <section className="flex flex-col items-center justify-center mt-20 pt-10 space-y-8 relative w-full">
+        {/* Decorative Grid Background */}
+        <div className="absolute inset-0 -z-10 h-full w-full bg-background bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_40%,#000_70%,transparent_100%)]"></div>
+
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-20 w-full">
+          {/* ── Left: Text Content ── */}
+          <div className="space-y-6 text-center md:text-left flex-1 max-w-2xl">
+            <Badge variant="outline" className="border-primary/50 text-primary bg-primary/10 tracking-widest uppercase">
+              Software Engineer • 2+ Year Exp.
+            </Badge>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[1.1] text-transparent bg-clip-text bg-gradient-to-br from-zinc-100 to-zinc-500 pb-4">
+              Morgan<br />Hardjadinata
+            </h1>
+            <p className="text-lg md:text-xl text-zinc-400 leading-relaxed">
+              I am a software engineer specializing in industrial equipment automation, embedded system failure analysis, and LLM &amp; MLLM workflow automation.
+            </p>
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
+              <a href="/Morgan_Hardjadinata_Resume.pdf" download="Morgan_Hardjadinata_Resume.pdf" className="flex items-center gap-2 bg-primary text-black font-semibold px-6 py-3 rounded-xl hover:bg-primary/90 transition-colors shadow-[0_0_20px_rgba(0,112,243,0.4)] hover:shadow-[0_0_30px_rgba(0,112,243,0.6)] hover:scale-105 active:scale-95 duration-200">
+                <Download className="w-5 h-5" /> Download CV
+              </a>
+              <a href="#contact" className="flex items-center gap-2 bg-white/5 border border-zinc-700 text-zinc-200 font-semibold px-6 py-3 rounded-xl hover:bg-white/10 hover:border-zinc-500 transition-all hover:scale-105 active:scale-95 duration-200">
+                <Mail className="w-5 h-5" /> Contact Me
+              </a>
+            </div>
+          </div>
+
+          {/* ── Right: Portrait Image ── */}
+          <div className="relative flex-shrink-0">
+            <div className="relative w-64 h-80 md:w-72 md:h-96 lg:w-80 lg:h-[26rem] rounded-2xl overflow-hidden border border-zinc-800/60 shadow-2xl bg-zinc-900 flex items-center justify-center">
+              {/* Replace the span below with: <img src="/me.jpg" alt="Morgan" className="w-full h-full object-cover object-top" /> */}
+              <span className="text-zinc-600 font-mono text-xs text-center px-4">Drop me.jpg into<br />/public/me.jpg</span>
+              {/* Subtle gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            </div>
+            {/* Available for work badge */}
+            <div className="absolute -bottom-3 -left-4 bg-[#0a0a0a]/90 backdrop-blur-md border border-zinc-700 rounded-xl px-4 py-2 flex items-center gap-3 shadow-[0_4px_20px_rgba(0,0,0,0.5)] z-20 hover:scale-105 transition-transform cursor-default">
+              <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.8)]" />
+              <span className="text-xs font-semibold text-zinc-200 tracking-wide uppercase">Available for work</span>
+            </div>
+          </div>
         </div>
 
-        <nav className="space-y-6 flex-1">
-          <div>
-            <p className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-3">Portfolio</p>
-            <div className="space-y-1">
-              <Button variant="ghost" className="w-full justify-start text-neutral-300 hover:text-white">Overview</Button>
-              <Button variant="ghost" className="w-full justify-start text-neutral-300 hover:text-white">Architecture</Button>
+        <div className="w-full mt-12 z-20 flex flex-col md:flex-row items-center md:items-center gap-8">
+          <ActiveTerminal />
+          <div className="hidden md:flex flex-1 justify-center mb-8">
+            <div className="flex flex-col items-center gap-2 text-zinc-500 animate-bounce">
+              <span className="text-[10px] font-mono uppercase tracking-[0.3em] font-semibold">Scroll</span>
+              <ChevronDown className="w-5 h-5" />
             </div>
           </div>
+        </div>
+      </section>
 
-          <Separator className="bg-neutral-800" />
+      {/* Tech Skills Section */}
+      <section className="w-full relative z-20 overflow-hidden py-2">
+        {/* Ambient Background Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -z-10" />
 
-          <div>
-            <p className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-3">Active Workspaces</p>
-            <div className="space-y-1">
-              <Button variant="ghost" className="w-full justify-start text-neutral-400 hover:text-blue-400">
-                <Terminal className="mr-2 h-4 w-4" /> Local Daemon
-              </Button>
-              <Button variant="ghost" className="w-full justify-start text-neutral-400 hover:text-purple-400">
-                <Video className="mr-2 h-4 w-4" /> GPU Cluster
-              </Button>
-              <Button variant="ghost" className="w-full justify-start text-neutral-400 hover:text-green-400">
-                <Workflow className="mr-2 h-4 w-4" /> n8n Orchestration
-              </Button>
-            </div>
-          </div>
-        </nav>
-      </aside>
+        <div className="flex flex-col items-center justify-center text-center mb-12 relative z-10">
+          <span className="text-primary text-sm font-medium tracking-wider uppercase mb-3">My Toolkit</span>
+          <h2 className="text-3xl font-bold tracking-tight text-zinc-200">Technology I Work With</h2>
+          <p className="text-zinc-500 mt-2 max-w-md">From edge firmware to distributed AI systems — the stack I use to build at scale.</p>
+        </div>
+        <TechMatrix />
+      </section>
 
-      {/* Main Content Area */}
-      <main className="flex-1 p-8 md:p-12 lg:p-24 overflow-y-auto">
+      <FeaturedProjects />
 
-        {/* Hero Section */}
-        <header className="max-w-3xl mb-16">
-          <Badge variant="outline" className="mb-4 border-neutral-700 text-neutral-300">
-            Available for Fall 2026 MEng Programs
-          </Badge>
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
-            Morgan Hardjadinata
-          </h1>
-          <h2 className="text-2xl text-blue-500 font-semibold mb-6">
-            Computer & Data Science | UW-Madison
-          </h2>
-          <p className="text-lg text-neutral-400 leading-relaxed">
-            Specializing in bridging the gap between low-power edge AI logic and high-power compute.
-            Building scalable orchestration platforms, microservices, and dynamic web applications.
-          </p>
-        </header>
+      {/* About Me Section */}
+      <section id="about" className="w-full relative z-20 max-w-6xl overflow-hidden py-2">
+        {/* Ambient Background Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -z-10" />
 
-        {/* Projects Grid */}
-        <section>
-          <div className="flex items-center justify-between mb-6 border-b border-neutral-800 pb-2">
-            <h3 className="text-2xl font-bold">Engineering Showcases</h3>
-            <Button variant="outline" size="sm">View GitHub</Button>
-          </div>
+        <AboutMe />
+      </section>
 
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+      {/* Experience Timeline Section */}
+      <section id="experience" className="w-full relative z-20 max-w-6xl overflow-hidden py-2">
+        {/* Ambient Background Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -z-10" />
 
-            {/* Project Card 1 */}
-            <Card className="bg-neutral-900/50 border-neutral-800 hover:border-neutral-700 transition-colors">
-              <CardHeader>
-                <div className="flex justify-between items-start">
-                  <div className="p-2 bg-blue-500/10 rounded-lg w-fit mb-4">
-                    <Cpu className="h-6 w-6 text-blue-500" />
-                  </div>
-                  <Badge className="bg-green-500/10 text-green-400 hover:bg-green-500/20 border-0">Hardware/Software</Badge>
-                </div>
-                <CardTitle>Cortex-Connect</CardTitle>
-                <CardDescription className="text-neutral-400 mt-2">
-                  Retrofitting legacy industrial machinery with an NVIDIA Jetson Orin Nano for edge AI capabilities. Navigated the complex electrical engineering challenges of interfacing low-power logic with high-power motors.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  <Badge variant="secondary" className="bg-neutral-800 text-neutral-300">Embedded Systems</Badge>
-                  <Badge variant="secondary" className="bg-neutral-800 text-neutral-300">Edge AI</Badge>
-                  <Badge variant="secondary" className="bg-neutral-800 text-neutral-300">C++</Badge>
-                </div>
-              </CardContent>
-            </Card>
+        <ExperienceTimeline />
+      </section>
 
-            {/* Project Card 2 */}
-            <Card className="bg-neutral-900/50 border-neutral-800 hover:border-neutral-700 transition-colors">
-              <CardHeader>
-                <div className="flex justify-between items-start">
-                  <div className="p-2 bg-purple-500/10 rounded-lg w-fit mb-4">
-                    <Network className="h-6 w-6 text-purple-500" />
-                  </div>
-                  <Badge className="bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 border-0">MLOps</Badge>
-                </div>
-                <CardTitle>Automated EFA & SRAM Diagnostics</CardTitle>
-                <CardDescription className="text-neutral-400 mt-2">
-                  Engineered AI solutions for Infineon Technologies across Singapore, Tokyo, and San Jose. Developed systems to fully automate Electrical Failure Analysis and diagnostic workflows.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  <Badge variant="secondary" className="bg-neutral-800 text-neutral-300">Python</Badge>
-                  <Badge variant="secondary" className="bg-neutral-800 text-neutral-300">PyTorch</Badge>
-                  <Badge variant="secondary" className="bg-neutral-800 text-neutral-300">Automation</Badge>
-                </div>
-              </CardContent>
-            </Card>
+      {/* Testimonials Section */}
+      <section id="testimonials" className="w-full relative z-20 max-w-6xl">
+        <TestimonialsCarousel />
+      </section>
 
-          </div>
-        </section>
+      {/* Contact Section */}
+      <section id="contact" className="w-full relative z-20 max-w-6xl mb-32">
+        <ContactPage />
+      </section>
 
-      </main>
     </div>
   );
 }
