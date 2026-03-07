@@ -5,18 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Github, ExternalLink, Play, Search, LayoutGrid } from "lucide-react";
 import Link from "next/link";
 import { useProjectStore } from "@/store/useProjectStore";
-import { ProjectCategory } from "@/lib/data/apps";
-
-const ALL_CATEGORIES: ProjectCategory[] = [
-    "AI / ML",
-    "Desktop Automation",
-    "Financial",
-    "Video Generation",
-    "Coding",
-    "Web / Full-Stack",
-    "Embedded Systems",
-    "Computer Vision",
-];
+import { CATEGORIES, CATEGORY_DISPLAY } from "@/lib/types/project";
+import type { ProjectCategory } from "@/lib/types/project";
 
 const statusColors: Record<string, string> = {
     active: "text-emerald-400 border-emerald-500/50",
@@ -28,6 +18,7 @@ export default function AppsPage() {
     const projects = useProjectStore((s) => s.projects);
     const [search, setSearch] = useState("");
     const [activeCategory, setActiveCategory] = useState<ProjectCategory | "All">("All");
+    const categoryLabel = (cat: ProjectCategory) => CATEGORY_DISPLAY[cat] ?? cat;
     const [activeType, setActiveType] = useState<"all" | "showcase" | "sandbox">("all");
 
     const filtered = projects.filter((p) => {
@@ -95,16 +86,16 @@ export default function AppsPage() {
                 >
                     All
                 </button>
-                {ALL_CATEGORIES.map((cat) => (
+                {CATEGORIES.map(([value, label]) => (
                     <button
-                        key={cat}
-                        onClick={() => setActiveCategory(cat)}
-                        className={`px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider transition-all border ${activeCategory === cat
+                        key={value}
+                        onClick={() => setActiveCategory(value)}
+                        className={`px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider transition-all border ${activeCategory === value
                             ? "bg-zinc-200 text-black border-zinc-200"
                             : "bg-transparent border-zinc-800 text-zinc-500 hover:border-zinc-600"
                             }`}
                     >
-                        {cat}
+                        {label}
                     </button>
                 ))}
             </div>
@@ -136,12 +127,12 @@ export default function AppsPage() {
                                         />
                                     ) : (
                                         <div className="absolute inset-0 flex items-center justify-center text-zinc-700 font-mono text-sm">
-                                            [ {project.category} ]
+                                            [ {categoryLabel(project.category as ProjectCategory)} ]
                                         </div>
                                     )}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-                                    {/* Hover actions — unified for both types */}
+                                    {/* Hover actions */}
                                     <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                         {project.type === "sandbox" && (
                                             <Link href={`/apps/${project.id}`}
@@ -170,7 +161,7 @@ export default function AppsPage() {
                                             {project.status}
                                         </div>
                                     )}
-                                    {project.type === "sandbox" && project.resourceCostPerMin !== undefined && (
+                                    {project.type === "sandbox" && project.resourceCostPerMin != null && (
                                         <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-sm border border-primary/30 rounded-full px-2.5 py-0.5 text-xs font-mono text-primary font-bold">
                                             ${project.resourceCostPerMin.toFixed(2)}/min
                                         </div>
