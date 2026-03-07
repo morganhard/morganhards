@@ -1,16 +1,16 @@
-// lib/db.ts
-import { PrismaClient } from './generated/prisma'; // ⚠️ Ensure this matches your custom output path exactly, DO NOT use '@prisma/client'
+import { PrismaClient } from './generated/prisma';
 
 const prismaClientSingleton = () => {
     return new PrismaClient();
 };
 
-declare global {
-    var prismaGlobal: undefined | ReturnType<typeof prismaClientSingleton>;
-}
+// Use a cleaner global type definition
+type PrismaClientSingleton = ReturnType<typeof prismaClientSingleton>;
 
-const prisma = globalThis.prismaGlobal ?? prismaClientSingleton();
+const globalForPrisma = globalThis as unknown as {
+    prisma: PrismaClientSingleton | undefined;
+};
 
-export default prisma;
+export const prisma = globalForPrisma.prisma ?? prismaClientSingleton();
 
-if (process.env.NODE_ENV !== 'production') globalThis.prismaGlobal = prisma;
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
