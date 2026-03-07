@@ -1,4 +1,6 @@
+export const dynamic = 'force-dynamic'; // Tells Next.js NOT to run this during build
 import { NextResponse } from 'next/server';
+
 import db from '@/lib/db';
 import { INITIAL_PROJECTS } from '@/lib/data/apps';
 
