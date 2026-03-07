@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la \"E:/project/morganhards/.claude/worktrees/elastic-sinoussi/morganhards/.env\"*)",
+      "Bash(npm install)",
+      "Bash(npx prisma generate)",
+      "WebFetch(domain:www.prisma.io)",
+      "Bash(npm install @prisma/adapter-pg)",
+      "Bash(npx prisma migrate dev --name init-full-schema)",
+      "Bash(npx prisma migrate reset --force)",
+      "Bash(PRISMA_USER_CONSENT_FOR_DANGEROUS_AI_ACTION=\"Yes, reset the database\" npx prisma migrate reset --force)",
+      "Bash(npx prisma db seed)",
+      "Bash(npm run build)"
+    ]
+  }
+}
