@@ -2,7 +2,7 @@
 
 import db from '@/lib/db';
 import { revalidatePath } from 'next/cache';
-import { Project } from '@prisma/client';
+import { Project } from '@/lib/generated/prisma';
 
 export async function getProjects() {
     try {
