@@ -1,44 +1,82 @@
+"use client";
+
 import { create } from "zustand";
-import { Project, INITIAL_PROJECTS } from "@/lib/data/apps";
+import type { ProjectWithArchDocs } from "@/lib/types/project";
 
 const MAX_FEATURED = 4;
 
 interface ProjectStore {
-    projects: Project[];
-    addProject: (project: Project) => void;
-    updateProject: (id: string, updates: Partial<Project>) => void;
-    deleteProject: (id: string) => void;
-    toggleFeatured: (id: string) => void;
-    getFeatured: () => Project[];
+  projects: ProjectWithArchDocs[];
+  isLoading: boolean;
+  error: string | null;
+
+  fetchProjects: () => Promise<void>;
+  addProject: (project: Record<string, unknown>) => Promise<void>;
+  updateProject: (id: string, updates: Record<string, unknown>) => Promise<void>;
+  deleteProject: (id: string) => Promise<void>;
+  toggleFeatured: (id: string) => Promise<void>;
+  getFeatured: () => ProjectWithArchDocs[];
 }
 
 export const useProjectStore = create<ProjectStore>((set, get) => ({
-    projects: INITIAL_PROJECTS,
+  projects: [],
+  isLoading: false,
+  error: null,
 
-    addProject: (project) =>
-        set((s) => ({ projects: [...s.projects, project] })),
+  fetchProjects: async () => {
+    set({ isLoading: true, error: null });
+    try {
+      const res = await fetch("/api/projects");
+      if (!res.ok) throw new Error("Failed to fetch projects");
+      const data = await res.json();
+      set({ projects: data, isLoading: false });
+    } catch (e: unknown) {
+      const message = e instanceof Error ? e.message : "Unknown error";
+      set({ error: message, isLoading: false });
+    }
+  },
 
-    updateProject: (id, updates) =>
-        set((s) => ({
-            projects: s.projects.map((p) => (p.id === id ? { ...p, ...updates } : p)),
-        })),
+  addProject: async (project) => {
+    const res = await fetch("/api/projects", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(project),
+    });
+    if (!res.ok) throw new Error("Failed to create project");
+    const created = await res.json();
+    set((s) => ({ projects: [created, ...s.projects] }));
+  },
 
-    deleteProject: (id) =>
-        set((s) => ({ projects: s.projects.filter((p) => p.id !== id) })),
+  updateProject: async (id, updates) => {
+    const res = await fetch(`/api/projects/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updates),
+    });
+    if (!res.ok) throw new Error("Failed to update project");
+    const updated = await res.json();
+    set((s) => ({
+      projects: s.projects.map((p) => (p.id === id ? updated : p)),
+    }));
+  },
 
-    toggleFeatured: (id) =>
-        set((s) => {
-            const current = s.projects.find((p) => p.id === id);
-            if (!current) return s;
-            const featuredCount = s.projects.filter((p) => p.featured).length;
-            // Block adding a 5th featured
-            if (!current.featured && featuredCount >= MAX_FEATURED) return s;
-            return {
-                projects: s.projects.map((p) =>
-                    p.id === id ? { ...p, featured: !p.featured } : p
-                ),
-            };
-        }),
+  deleteProject: async (id) => {
+    const res = await fetch(`/api/projects/${id}`, { method: "DELETE" });
+    if (!res.ok) throw new Error("Failed to delete project");
+    set((s) => ({ projects: s.projects.filter((p) => p.id !== id) }));
+  },
 
-    getFeatured: () => get().projects.filter((p) => p.featured).slice(0, MAX_FEATURED),
+  toggleFeatured: async (id) => {
+    const current = get().projects.find((p) => p.id === id);
+    if (!current) return;
+    const featuredCount = get().projects.filter((p) => p.featured).length;
+    if (!current.featured && featuredCount >= MAX_FEATURED) return;
+
+    await get().updateProject(id, { featured: !current.featured });
+  },
+
+  getFeatured: () =>
+    get()
+      .projects.filter((p) => p.featured)
+      .slice(0, MAX_FEATURED),
 }));
