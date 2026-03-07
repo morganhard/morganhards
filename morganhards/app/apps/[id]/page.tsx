@@ -43,7 +43,7 @@ export default function AppPortalPage({ params }: PageProps) {
                                 {app.status.charAt(0).toUpperCase() + app.status.slice(1)}
                             </Badge>
                         )}
-                        {app.resourceCostPerMin !== undefined && (
+                        {app.resourceCostPerMin != null && (
                             <Badge variant="outline" className="border-primary/40 text-primary bg-primary/10 font-mono">
                                 ${app.resourceCostPerMin.toFixed(2)}/min
                             </Badge>

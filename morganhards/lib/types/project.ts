@@ -6,7 +6,7 @@ import type {
   ProjectStatus,
   ShowcaseStatus,
   ProjectVisibility,
-} from "@/lib/generated/prisma";
+} from "@/lib/generated/prisma/client";
 
 // Re-export Prisma enums for use in components
 export type { ProjectType, ProjectCategory, ProjectStatus, ShowcaseStatus, ProjectVisibility };

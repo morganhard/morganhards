@@ -2,7 +2,7 @@
 // Used by prisma/seed.ts to populate the database with initial projects.
 // Enum values match the Prisma schema (e.g., "AI_ML" not "AI / ML").
 
-import type { ProjectCategory, ProjectType, ProjectStatus, ShowcaseStatus, ProjectVisibility } from "@/lib/generated/prisma";
+import type { ProjectCategory, ProjectType, ProjectStatus, ShowcaseStatus, ProjectVisibility } from "@/lib/generated/prisma/client";
 
 export interface SeedArchDocs {
   deploymentStrategy: string;

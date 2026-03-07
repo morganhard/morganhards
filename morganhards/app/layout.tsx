@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { ProjectProvider } from "@/components/providers/project-provider";
 import { Navbar } from "@/components/layout/navbar";
 import "./globals.css";
 const geistSans = Geist({
@@ -34,10 +35,12 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <Navbar />
-          <main className="relative z-10 w-full min-h-screen pb-24 pt-24">
-            {children}
-          </main>
+          <ProjectProvider>
+            <Navbar />
+            <main className="relative z-10 w-full min-h-screen pb-24 pt-24">
+              {children}
+            </main>
+          </ProjectProvider>
         </ThemeProvider>
       </body>
     </html>

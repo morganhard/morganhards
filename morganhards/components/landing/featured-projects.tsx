@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Github, ExternalLink, Play, AlertCircle } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Github, ExternalLink, Play } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import { useProjectStore } from "@/store/useProjectStore";
 import { useShallow } from "zustand/react/shallow";
+import { CATEGORY_DISPLAY } from "@/lib/types/project";
+import type { ProjectCategory } from "@/lib/types/project";
 
 const statusColors: Record<string, string> = {
     active: "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]",
@@ -51,7 +52,7 @@ export function FeaturedProjects() {
                                 />
                             ) : (
                                 <div className="absolute inset-0 flex items-center justify-center bg-zinc-900/50 text-zinc-700 font-mono text-sm">
-                                    [ {project.category} ]
+                                    [ {CATEGORY_DISPLAY[project.category as ProjectCategory] ?? project.category} ]
                                 </div>
                             )}
 
@@ -97,7 +98,7 @@ export function FeaturedProjects() {
                                     <span className="text-[10px] font-mono capitalize text-zinc-300">{project.status}</span>
                                 </div>
                             )}
-                            {project.type === "sandbox" && project.resourceCostPerMin !== undefined && (
+                            {project.type === "sandbox" && project.resourceCostPerMin != null && (
                                 <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-sm border border-primary/30 rounded-full px-2.5 py-0.5 text-xs font-mono text-primary font-bold">
                                     ${project.resourceCostPerMin.toFixed(2)}/min
                                 </div>
