@@ -32,7 +32,7 @@ function isValidToken(token: string | undefined): boolean {
     }
 }
 
-export default function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
     if (request.nextUrl.pathname.startsWith('/admin')) {
         const token = request.cookies.get(SESSION_COOKIE)?.value;
 
