@@ -8,8 +8,8 @@ const contactInfo = [
     {
         icon: Mail,
         label: "Email",
-        value: "mhardjadinat@wisc.edu",
-        href: "mailto:mhardjadinat@wisc.edu",
+        value: "morganhardjadinata@gmail.com",
+        href: "mailto:morganhardjadinata@gmail.com",
     },
     {
         icon: Phone,
@@ -20,8 +20,8 @@ const contactInfo = [
     {
         icon: MapPin,
         label: "Location",
-        value: "Madison, WI",
-        href: "https://maps.google.com/?q=Madison,WI",
+        value: "Austin, TX",
+        href: "https://maps.google.com/?q=Austin,TX",
     },
 ];
 
@@ -61,7 +61,7 @@ export default function ContactPage() {
                 <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl" />
             </div>
 
-            <div className="container mx-auto px-6 relative z-10 max-w-6xl">
+            <div className="mx-auto px-6 md:px-12 lg:px-20 relative z-10 max-w-6xl w-full">
                 {/* Section Header */}
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <span className="text-primary text-sm font-medium tracking-wider uppercase">
@@ -79,7 +79,7 @@ export default function ContactPage() {
                     </p>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 max-w-5xl mx-auto">
                     {/* Main Form Area */}
                     <GlassCard className="p-8 border-zinc-800/50 bg-black/40 shadow-2xl" animateHover={false}>
                         <form className="space-y-6" onSubmit={handleSubmit}>

@@ -42,9 +42,8 @@ export default function Home() {
 
           {/* ── Right: Portrait Image ── */}
           <div className="relative flex-shrink-0">
-            <div className="relative w-64 h-80 md:w-72 md:h-96 lg:w-80 lg:h-[26rem] rounded-2xl overflow-hidden border border-zinc-800/60 shadow-2xl bg-zinc-900 flex items-center justify-center">
-              {/* Replace the span below with: <img src="/me.jpg" alt="Morgan" className="w-full h-full object-cover object-top" /> */}
-              <span className="text-zinc-600 font-mono text-xs text-center px-4">Drop me.jpg into<br />/public/me.jpg</span>
+            <div className="relative w-80 h-96 md:w-96 md:h-[28rem] lg:w-[28rem] lg:h-[35rem] rounded-2xl overflow-hidden border border-zinc-800/60 shadow-2xl bg-zinc-900 flex items-center justify-center">
+              <img src="/me.jpg" alt="Morgan" className="w-full h-full object-cover object-top" />
               {/* Subtle gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
             </div>
